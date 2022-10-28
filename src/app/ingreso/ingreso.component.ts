@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Ingreso} from './ingreso.model';
+import {IngresoServicio} from './ingreso.servicio';
 
 @Component({
   selector: 'app-ingreso',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngresoComponent implements OnInit {
 
-  constructor() { }
+  ingresos: Ingreso[] = [];
 
-  ngOnInit(): void {
+  constructor(private ingresoServicio: IngresoServicio) {
   }
 
+  // tslint:disable-next-line:typedef
+  ngOnInit(): void {
+    this.ingresos = this.ingresoServicio.ingresos;
+  }
+
+  // tslint:disable-next-line:typedef
+  eliminarRegistro(ingreso: Ingreso): void {
+    this.ingresoServicio.eliminar(ingreso);
+  }
 }
