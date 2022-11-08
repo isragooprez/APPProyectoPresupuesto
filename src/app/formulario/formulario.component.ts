@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {IngresoServicio} from "../ingreso/ingreso.servicio";
+import {EgresoServicio} from "../egreso/egreso.servicio";
+import {Ingreso} from "../ingreso/ingreso.model";
+import {Egreso} from "../egreso/egreso.model";
 
 @Component({
   selector: 'app-formulario',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  tipo = 'ingresoOperacion';
+  descripcionInput: string;
+  valorInput: number;
+
+
+  constructor(private ingresoServicio: IngresoServicio,
+              private egresoServicio: EgresoServicio) {
+  }
 
   ngOnInit(): void {
   }
 
+
+  tipoOperacion(evento): void {
+    this.tipo = evento.target.value;
+  }
+
+  agregarValor(): void {
+    if (this.tipo === 'ingresoOperacion') {
+      this.ingresoServicio.ingresos.push(new Ingreso(this.descripcionInput, this.valorInput));
+    }else {
+      this.egresoServicio.egresos.push(new Egreso(this.descripcionInput, this.valorInput));
+    }
+  }
 }
