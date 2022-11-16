@@ -10,6 +10,7 @@ import {IngresoServicio} from "./ingreso/ingreso.servicio";
 import {EgresoServicio} from "./egreso/egreso.servicio";
 import {FormsModule} from "@angular/forms";
 
+
 @NgModule({
   declarations: [
     AppComponent,

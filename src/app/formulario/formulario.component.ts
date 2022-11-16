@@ -4,6 +4,7 @@ import {EgresoServicio} from "../egreso/egreso.servicio";
 import {Ingreso} from "../ingreso/ingreso.model";
 import {Egreso} from "../egreso/egreso.model";
 
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
